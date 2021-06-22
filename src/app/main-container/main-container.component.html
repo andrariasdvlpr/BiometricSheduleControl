@@ -1,0 +1,17 @@
+<!--<mat-toolbar>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+   <mat-icon>menu</mat-icon>
+ </button>
+ <span>My App</span>
+</mat-toolbar>-->
+<div style="display: flex; flex-direction: column; height: 100%;">
+  <div class="sticky-top">
+    <app-top-bar (openEvent)="showDrawler()"></app-top-bar>
+  </div>
+  <div style="flex: 1; max-height: 100%; overflow: auto;">
+    <app-lateral-nav-bar [show] ="isShowDrawler" (closeEvent) ="closeDrawler($event)"></app-lateral-nav-bar>
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+

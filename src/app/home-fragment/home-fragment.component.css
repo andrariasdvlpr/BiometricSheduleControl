@@ -1,0 +1,46 @@
+.fc-row{
+  display: flex;
+  width: 100%;
+}
+.inner-container{
+  padding: 20px;
+}
+[class*="main-container-"]{
+  width: 90%;
+  margin: auto;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Playfair Display', serif;
+  background-color: #fff;
+}
+[class*="img-template-"]{
+    width: 120px;
+    height: 120px;
+    border-radius: 30%;
+}
+
+@media only screen and (min-width: 600px){
+  .main-container-m{
+    width: 350px;
+  }
+  .img-template-m{
+    width: 160px;
+    height: 160px;
+  }
+}
+
+.colour-app { color: #181be7; }
+
+.container-img{
+  margin: auto;
+}
+
+.submit-home{
+  margin: auto;
+  border-radius: 15px;
+  padding: 10px 10px;
+  background-color: #181be7;
+  border: 2px solid #181be7;
+  color: white;
+}

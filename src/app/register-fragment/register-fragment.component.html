@@ -1,0 +1,30 @@
+<div class="main-container-m">
+    <div class="inner-container">
+        <form method="POST" enctype="multipart/form-data">
+        <div class="fc-row">
+            <div class="container-img">
+            <img class="img-main-add-xlog" height="60px" src="../../assets/home.png">
+            </div>
+        </div>
+        <div class="fc-row">
+            <input class="input-log" type="text" [(ngModel)]="firstname" name="firstname" placeholder="HOMBRE" required>
+        </div>
+        <div class="fc-row">
+            <input class="input-log" type="text" [(ngModel)]="lastname" name="lastname" placeholder="APELLIDOS" required>
+        </div>
+        <div class="fc-row">
+            <input class="input-log" type="text" [(ngModel)]="username" name="username" (focusout)="isUsedUser()" placeholder="USUARIO" required>
+        </div>
+        <div class="fc-row">
+            <input class="input-log" type="email" [(ngModel)]="email" name="email" (focusout)="isUsedEmail()" placeholder="CORREO" required>
+        </div>
+        <div class="fc-row">
+            <input class="input-log" type="password" [(ngModel)]="password" name="password" placeholder="CONTRASEÑA" required>
+        </div>
+        <div class="fc-row">
+            <input class="submit-log" type="submit" value="REGISTRARME" (click)="enroll()">
+        </div>
+        </form>
+    </div>
+</div>
+  

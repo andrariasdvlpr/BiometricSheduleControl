@@ -1,0 +1,20 @@
+<div class="main-container-m">
+    <div class="inner-container-m">
+      <div class="main-row-m">
+        <div class="fc-row colour-app"><span>Tipo de registro</span></div>
+        <div class="fc-row"><span>{{item.sc_type}}</span></div>
+      </div>
+      <div class="main-row-m">
+        <div class="fc-row colour-app"><span>Similitud de la verificación</span></div>
+        <div class="fc-row"><span>{{1-item.sc_distance |percent:'2.2-2'}}</span></div>
+      </div>
+      <div class="main-row-m">
+        <div class="fc-row colour-app"><span>Fecha y hora </span></div>
+        <div class="fc-row">
+          <span class="col-left">{{item.sc_date | date: 'd MMMM y, H:mm:ss' :'UTC'}}</span>
+          <span class="material-icons greenFc img-state" *ngIf= "'Verificado'=== item.sc_state">check_circle</span>
+          <span class="material-icons redFc img-state" *ngIf= "'Rechazado'=== item.sc_state">error</span>
+        </div>
+      </div>
+    </div>
+</div>

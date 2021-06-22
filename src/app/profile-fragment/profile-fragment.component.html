@@ -1,0 +1,28 @@
+ <div style="height: 100%; width: 100%; display: flex; flex-direction: column;" *ngIf="userData">
+  <div class="main-container-m">
+    <div class="inner-container">
+      <div class="fc-row"><div class="container-img"><img class="img-template-m" id="imgPopUp" src="data:image/png;base64,{{userData.image}}"></div></div>
+      <div class="main-row">
+        <div class="fc-row colour-app"><span>Nombre</span></div>
+        <div class="fc-row"><span>{{userData.first_name}}</span></div>
+      </div>
+      <div class="main-row">
+        <div class="fc-row colour-app"><span>Apellidos</span></div>
+        <div class="fc-row"><span>{{userData.last_name}}</span></div>
+      </div>
+      <div class="main-row final-main-row">
+        <div class="fc-row colour-app"><span>Fecha de alta</span></div>
+        <div class="fc-row"><span class="col-left">{{userData.registration_date}}</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="main-container-m" style="margin-top: 0;">
+    <div class="inner-container">
+      <div class="fc-row"><div class="container-img"><span class="material-icons blueFc" style="font-size: 36px;">contact_mail</span></div></div>
+      <div class="main-row final-main-row">
+        <div class="fc-row colour-app"><span>Correo</span></div>
+        <div class="fc-row"><span class="col-left">{{userData.email}}</span></div>
+      </div>
+    </div>
+  </div>
+</div>

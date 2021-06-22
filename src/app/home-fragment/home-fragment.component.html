@@ -1,0 +1,30 @@
+<div style="height: 100%; width: 100%; display: flex; flex-direction: column;">
+  <div class="main-container-m">
+    <div class="inner-container">
+      <div class="fc-row">
+        <div class="container-img">
+          <img class="img-main-add-xlog" width="270px" src="../../assets/home.png">
+        </div>
+      </div>
+      <div class="fc-row">
+        <div class="container-img">
+          <span class="material-icons blueFc" style="font-size: 48px;" (click)="showFormSuggestions()" *ngIf="!showForm">speaker_notes</span>
+        </div>
+      </div>
+      <div class="fc-row">
+        <span style="font-size: 12px; text-align: center;" *ngIf="!showForm">Presiona el icono para poder enviar sugerencias o informar de algún error</span>
+      </div>
+      <form method="POST" enctype="multipart/form-data" *ngIf="showForm">
+        <div class ="fc-row">
+            <textarea [(ngModel)] ="suggestion" name="suggestion" style="width: 100%;border: 1px solid black;border-radius: 10px;" rows="10"></textarea>
+        </div>
+        <div class ="fc-row">
+          <input class="submit-home" type="submit" value="ENVIAR" (click)="sendSuggestion()">
+        </div>
+      </form>
+      <div class="fc-row" style="margin-top: 100px;">
+        <span style="font-size: 10px; text-align: center;" class="colour-app">Premio Cátedra MN. Andrés Felipe Arias Cárdenas. andrariasdvlpr@gmail.com</span>
+      </div>
+    </div>
+  </div>
+</div>

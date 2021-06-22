@@ -1,0 +1,43 @@
+.fc-row{
+  display: flex;
+  width: 100%;
+}
+
+[class*="inner-container-"]{
+  padding: 5px;
+  display: block;
+}
+[class*="main-container-"]{
+  width: 100%;
+  margin: auto;
+  border-bottom: 1px solid #c2c2c2;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Playfair Display', serif;
+}
+[class*="main-row-"]{
+  flex: unset;
+}
+
+@media only screen and (min-width: 710px){
+  .main-container-m{
+    width: 700px;
+    border: 1px solid #c2c2c2;
+  }
+  .inner-container-m{
+    display: flex;
+    flex-direction: row;
+  }
+  .main-row-m{
+    flex: 1;
+  }
+}
+
+.colour-app { color: #181be7; }
+
+.col-left{
+  flex: 1;
+}
+.img-state{
+  font-size: 18px;
+}

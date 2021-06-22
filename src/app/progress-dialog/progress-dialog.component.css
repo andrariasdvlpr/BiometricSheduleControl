@@ -1,0 +1,30 @@
+.mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #181be7;
+  }
+
+  .inner-container{
+    padding: 20px;
+  }
+  [class*="main-container-"]{
+    width: 70vw;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Playfair Display', serif;
+    background-color: #fff;
+  }
+  [class*="img-template-"]{
+      width: 120px;
+      height: 120px;
+      border-radius: 30%;
+  }
+
+  @media only screen and (min-width: 600px){
+    .main-container-m{
+      width: 350px;
+    }
+    .img-template-m{
+      width: 160px;
+      height: 160px;
+    }
+  }

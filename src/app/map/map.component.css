@@ -1,0 +1,23 @@
+.map-frame{
+  padding: 0;
+}
+[class*="map-container-"]{
+  width: 80vw;
+  margin: auto;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Playfair Display', serif;
+  background-color: #fff;
+}
+
+@media only screen and (min-width: 600px){
+  .map-container-m{
+    width: 400px;
+  }
+}
+
+#map{
+  height: 400px;
+}
+

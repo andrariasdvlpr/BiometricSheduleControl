@@ -1,0 +1,33 @@
+<app-camera (resultEvent) ="showResult($event)" *ngIf="!isShowResult && !isInitialState"></app-camera>
+<div style="height: 100%; width: 100%; display: flex; flex-direction: column;" *ngIf="isInitialState">
+  <div class="main-container-m">
+    <div class="inner-container">
+      <div class="fc-row-button row-margin">
+        <input class="submit-log" type="button" value="Capturar modelo biométrico" (click)="changeInitialState()">
+      </div>
+      <div class="fc-row-button">
+        <input class="submit-log" type="button" value="Cerrar sesión" (click)="goLogin()">
+      </div>
+    </div>
+  </div>
+</div> 
+<div style="height: 100%; width: 100%; display: flex; flex-direction: column;" *ngIf="isShowResult">
+  <div class="main-container-m">
+    <div class="inner-container">
+        <div class="main-row fc-row final-main-row">
+            <div class="container-img"><img class="img-template-m" id="imgPopUp" src="data:image/png;base64,{{value.image}}"></div>
+        </div>
+        <div class="main-row">
+            <div class="fc-row colour-app"><span>Nombre</span></div>
+            <div class="fc-row"><span>{{value.first_name}}</span></div>
+        </div>
+        <div class="main-row final-main-row">
+            <div class="fc-row colour-app"><span>Apellidos</span></div>
+            <div class="fc-row"><span>{{value.last_name}}</span></div>
+        </div>
+        <div class="button-home-container">
+          <input class="submit-log button-home" type="button" value="Pantalla pricipal" (click)="goHome()">
+        </div>
+    </div>
+  </div>
+</div>

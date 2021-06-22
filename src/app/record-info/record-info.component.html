@@ -1,0 +1,30 @@
+<div class="main-container-m">
+  <div class="inner-container">
+    <div class="fc-row"><div class="container-img"><img class="img-template-m" id="imgPopUp" src="data:image/png;base64,{{ActLog.image}}"></div></div>
+    <div class="main-row">
+      <div class="fc-row colour-app"><span>DNI</span></div>
+      <div class="fc-row"><span>{{record.user_dni}}</span></div>
+    </div>
+    <div class="main-row">
+      <div class="fc-row colour-app"><span>Nombre</span></div>
+      <div class="fc-row"><span>{{ActLog.first_name}}</span></div>
+    </div>
+    <div class="main-row">
+      <div class="fc-row colour-app"><span>Apellidos</span></div>
+      <div class="fc-row"><span>{{ActLog.last_name}}</span></div>
+    </div>
+    <div class="main-row">
+      <div class="fc-row colour-app"><span>Fecha y hora </span></div>
+      <div class="fc-row"><span class="col-left">{{record.sc_date | date: 'd MMMM y, H:mm:ss' :'UTC'}}</span></div>
+    </div>
+    <div class="main-row final-main-row">
+      <div class="fc-row colour-app"><span>Estado</span></div>
+      <div class="fc-row"><span>{{record.sc_state}}</span></div>
+    </div>
+    <div class="fc-row" (click) ="showLocation()">
+      <div class="container-img">
+        <span class="material-icons blueFc">gps_fixed</span>
+      </div>
+    </div>
+  </div>
+</div>

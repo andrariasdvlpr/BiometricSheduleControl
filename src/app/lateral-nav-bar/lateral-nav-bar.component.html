@@ -1,0 +1,35 @@
+<div class="modal" *ngIf="show">
+<div class="modal-content animate content-add-m">
+  <div class="main-container">
+  <div class ="main-row">
+  <div class="fc-row" [routerLink]="['/app/home']" [routerLinkActive]="['active']" (click)="ShowDiv(!show)">
+    <span class="material-icons blueFc fc-col-l">home</span>
+    <span class="fc-col-r">Inicio</span>
+  </div>
+  <div class="fc-row" [routerLink]="['/app/profile']" [routerLinkActive]="['active']" (click)="ShowDiv(!show)">
+    <span class="material-icons blueFc fc-col-l">person</span>
+    <span class="fc-col-r">Perfil</span>
+  </div>
+  <div class="fc-row" [routerLink]="['/app/camera']" [routerLinkActive]="['active']" (click)="ShowDiv(!show)">
+    <span class="material-icons blueFc fc-col-l">photo_camera</span>
+    <span class="fc-col-r">Registro actividad</span>
+  </div>
+  <div class="fc-row" [routerLink]="['/app/history']" [routerLinkActive]="['active']" (click)="ShowDiv(!show)">
+    <span class="material-icons blueFc fc-col-l">history</span>
+    <span class="fc-col-r">Historial</span>
+  </div>
+</div>
+  <div class="mt-auto">
+    <div class="fc-row" [routerLink]="['/app/psswd']" [routerLinkActive]="['active']" (click)="ShowDiv(!show)">
+      <span class="material-icons blueFc fc-col-l">change_circle</span>
+      <span class="fc-col-r">Cambiar contraseña</span>
+    </div>
+    <div class="fc-row" [routerLink]="['/login']">
+      <span class="material-icons blueFc fc-col-l">logout</span>
+      <span class="fc-col-r">Cerrar sesión</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="div-for-close" (click)="ShowDiv(!show)"></div>
+</div>

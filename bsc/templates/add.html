@@ -1,0 +1,44 @@
+{% extends "users.html" %}
+{% load static %}
+{% block userscontent %}
+<div class="content-add-m fc-shadow">
+    <form action='add' method='post' enctype='multipart/form-data'>{% csrf_token %}
+    <div class="content-inner-add-m">
+        <div class="fc-row fc-prin-row-m">
+            <div>
+                <img class="img-template-m" id="imgPopUp" src="{% static '/styleResources/account-circle.png' %}">
+            </div>
+            <div class="fc-col">
+                <div class="fc-row">
+                    <img class="img-manage" src="/static/styleResources/card-account.png">
+                    <input id="employee_id" class="input-row-add-xlog input-row fc-col" type="text" name="cardaccount" placeholder="DNI" />
+                </div>
+                <div class="fc-row">
+                    <img class="img-manage" src="/static/styleResources/account-tie.png">
+                    <input id="firstname" class="input-row-add-xlog input-row fc-col" type="text" name="firstname" placeholder="NOMBRE" />
+                </div>
+                <div class="fc-row">
+                    <img class="img-manage" src="/static/styleResources/account-group.png">
+                    <input id="lastname" class="input-row-add-xlog input-row fc-col" type="text" name="lastname" placeholder="APELLIDOS" />
+                </div>
+            </div>
+        </div>
+    <div>
+        <div class="fc-row">
+            <img class="img-manage" src="/static/styleResources/account-sbc.png">
+            <input id="username" class="input-row-add-xlog input-row fc-col" type="text" name="username" placeholder="USUARIO">
+        </div>
+        <div class="fc-row">
+            <img class="img-manage" src="/static/styleResources/email.png">
+            <input id="email" class="input-row-add-xlog input-row fc-col" type="text" name="email" placeholder="CORREO">
+        </div>
+        <div class="fc-row">
+            <img class='img-manage' src="{% static '/styleResources/lock-bsc.png' %}" />
+            <input class="input-row-add-xlog input-row fc-col" type="password" name="password" placeholder="CONTRASEÑA" />
+        </div>
+        <div class="fc-row buton-add"><input class='submit-add-xlog' type="submit" Value="REGISTRAR" /></div>
+    </div>
+    </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="h-100 fc-max-xl">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="{% static 'styleResources/base.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'styleResources/users.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'styleResources/records.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'styleResources/reports.css' %}">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+		{% block stylescript %}{% endblock %}
+		<link rel="shortcut icon" href="{% static 'styleResources/iconbsc.png' %}" />
+		<title>BSC</title>
+	</head>
+	
+	<body {% block onload %}{% endblock %} class="d-flex flex-column h-100">
+		<main class="flex-shrink-0 base-main">
+			<header class="sticky-top">
+				<nav class="navbar navbar-expand-lg navbar-light nv-fcclk">
+					<div class="container-fluid">
+						<a class="navbar-brand" href="#">
+							<img src="{% static 'styleResources/home.png' %}" alt="" height="30">
+						</a>
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle base-nav-links {% if 'users' in request.path %}active{% endif %}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+									USUARIOS
+								</a>
+								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+									<li><a class="dropdown-item" href="../users/add">AÑADIR</a></li>
+									<li><a class="dropdown-item" href="../users/update">GESTIONAR</a></li>
+								</ul>
+							</li>
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle base-nav-links {% if 'controls' in request.path %}active{% endif %}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+									REGISTROS
+								</a>
+								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+									<li><a class="dropdown-item" href="../controls/unfinished">PENDIENTES</a></li>
+									<li><hr class="dropdown-divider"></li>
+									<li><a class="dropdown-item" href="../controls/finished">CORRECTOS</a></li>
+									<li><a class="dropdown-item" href="../controls/rejected">ERRONEOS</a></li>
+								</ul>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link base-nav-links {% if 'company' in request.path %}active{% endif %}"  href="../company/">OPCIONES</a>
+							</li>
+						</ul>
+						<ul class="navbar-nav mb-2 mb-lg-0 justify-content-end" >
+							<li class="nav-item">
+								{% block logout %} {% endblock %}
+							</li>
+						</ul>
+					</div>
+					</div>
+				</nav>
+			</header>
+			<div class="main-container">
+				{% block content %}	
+
+				{% endblock %}
+			
+			</div>
+			<footer class="footer py-3 bg-light">
+				<div class="container">
+				  <span class="text-muted">Proyecto premio Cátedra MN. Andrés Felipe Arias Cárdenas. <a href="mailto:andrariasdvlpr@gmail.es" target="_blank" id="MailtoFooter">andrariasdvlpr@gmail.es</a></span>
+				</div>
+			</footer>
+		</main>
+	</body>
+</html>

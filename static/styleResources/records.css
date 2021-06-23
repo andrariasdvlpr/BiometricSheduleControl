@@ -1,0 +1,18 @@
+.content-records{
+    width: 40%;
+    overflow-y: scroll;
+    padding-top: 10px;
+    margin:auto;
+    min-height: 460px;
+}
+.filter-x{
+    text-align: center;
+}
+.select-records{
+    padding: 12px 20px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-family: 'Playfair Display', serif;
+    font-size: 12px;
+    margin-left: 20px;
+}

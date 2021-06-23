@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% block stylescript %}
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="{% static 'javascript/reports.js' %}"></script>
+{% endblock %}
+{% block onload %}onload="onLoadReports()"{% endblock %}
+{% block logout %}<a class="nav-link base-nav-links" href='../logout/'>SALIR</a>{% endblock %}
+{% block content %}
+    <div class="container-charts">
+        <div class="title-charts"><strong>GRAFICOS CURVAS ROC Y DET </strong></div>
+        <div id="curve_chart" class="chart-his-det-roc"></div>
+        <div id="curve_chart2" class="chart-his-det-roc"></div>
+    </div>
+    <div class="container-charts">
+        <div class="title-charts"><strong>HISTOGRAMAS INTENTOS VERIFICACION USUARIOS E IMPOSTORES </strong></div>
+        <div id="chart_div" class="chart-his-det-roc"></div>
+        <div id="chart_div_2" class="chart-his-det-roc"></div>
+    </div>	
+{% endblock %}

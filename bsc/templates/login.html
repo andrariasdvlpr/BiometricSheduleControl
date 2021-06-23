@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}			
+<div class="cont-log login-content">
+	<form action='/bsc/admin/login/verify/{{next}}' method='post' enctype='multipart/form-data'>{% csrf_token %}	
+		<div class='content-log-xl'>
+			<img class="img-main-add-xl" src="{% static 'styleResources/badge-account-horizontal.png' %}" />
+			<p>
+				<div class="form-floating mb-3">
+					<input class="input-row-add-xlog form-control" placeholder="Usuario" id="floatingInput" type="text" name="username" required />
+					<label for="floatingInput">Usuario</label>
+				</div>
+			</p>
+			<p>
+				<div class="form-floating">
+					<input class="input-row-add-xlog form-control" id="floatingPassword" placeholder="Contraseña" type="password" name="password" required />
+					<label for="floatingPassword">Contraseña</label>
+				</div>
+			</p>
+			<p><input class='login-submit' type="submit" Value="ENTRAR" /></p>
+		</div>
+	</form>
+</div>
+{% endblock %}
+		

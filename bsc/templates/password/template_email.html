@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html style="height: 100%;width: 100%;">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	</head>
+	
+    <body style="height: 100%;width: 100%;">
+		<div style="width: 600px;height: 100%;margin: auto;display: flex;flex-direction: column;font-family: 'Playfair Display', serif;">
+            <div style="padding: 5px;margin-top: auto;margin-bottom: auto;">
+              <table>
+                <tr>
+                    <td style="text-align:center;"><img height="60px" src="{% static 'styleResources/home.png' %}"></td>
+                </tr>
+                <tr >
+                    <td style="text-align:center;"><img  height="140px" src="{% static 'styleResources/iconbsc.png' %}"></td>
+                </tr>
+			    <tr>
+                    <td style="text-align:center;"><span style="font-size: 16px; text-align: center;"><strong>RECUPERACIÓN DE CONTRASEÑA<strong></span></td>
+			    </tr>
+                <tr><td><p></p></td></tr>
+			    <tr>
+                    <td><span style="font-size: 14px; text-align:left;">Hemos recibido una petición de recuperación de contraseña de la cuenta asociada a este correo, para iniciar el proceso de recuperación de contraseña pulsa el botón de abajo.</span></td>
+                </tr>
+                <tr>
+                    <td style="text-align:center;width: 100%;padding: 15px 100px;"><a href="{{ protocol }}://{{ domain }}{% url 'password_reset_confirm' uidb64=uid token=token %}" style="border-radius: 15px;padding: 15px 15px;background-color: #181be7;border: 2px solid #181be7;color: white;display: block;">Empezar</a></td>
+                </tr>
+                <tr >
+                    <td><span style="font-size: 14px; text-align: left;">Si no le funciona, copie el siguiente enlace en el navegador</span></td>
+                </tr>
+                <tr>
+                    <td style="text-align:center;"><p style="font-size: 14px; text-align: center;">{{ protocol }}://{{ domain }}{% url 'password_reset_confirm' uidb64=uid token=token %}</p></td>
+                </tr>
+                <tr>
+                    <td><span style="font-size: 14px; text-align: right;">El enlace es de un solo uso, si desea recuperar la contraseña en otra ocasión inicie el proceso en la app o en https://mock.com.es/user/password/reset</span></td>
+                </tr>
+                <tr><td><p></p></td></tr>
+                <tr>
+                    <td><span style="font-size: 14px; text-align: right;">Si ha recibido este correo y no ha solicitado la recuperación de la contraseña, ignórelo.</span></td>
+                </tr>
+                <tr><td><p></p></td></tr>
+                <tr>
+                    <td><span style="font-size: 14px; text-align: center;">No responder a este correo, equipo de bsc.</span></td>
+                </tr>
+            </table>
+            </div>
+          </div>
+	</body>
+</html>

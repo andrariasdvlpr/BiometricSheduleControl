@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+{% block stylescript %}
+    <script type="text/javascript" src="{% static 'javascript/records.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'javascript/leaflet.css' %}" />
+    <script src="{% static 'javascript/leaflet.js' %}"></script>
+{% endblock %}
+{% block logout %}<a  class="nav-link base-nav-links" href='../logout/'>SALIR</a>{% endblock %}
+{% block content %}
+
+<div class='content-parent-users content-records'>
+    <div class='content-table-users'>
+    {% block recordcontent %}
+    
+    {% endblock %}
+    </div>
+</div>
+<div id="modal-wrapper" class="modal popup-container">
+    {% block recordhidden %}
+    
+    {% endblock %}
+</div>
+{% endblock %}

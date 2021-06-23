@@ -1,0 +1,83 @@
+{% extends "records.html" %}
+{% load static %}
+{% block recordcontent %}
+<p class="filter-x">
+    <span>SELECCIONE UN USUARIO :</span>
+    <select class="select-records" id="selectFilter" name="filter" required="" onchange="restControls('{{option}}')">
+        <option value="">FILTRO DNI</option>
+            {% for user in users %}
+                <option value="{{user.user.id}}">{{user.employee_id}}</option>
+            {% endfor %}
+    </select>
+</p>
+<table class='table-x1' id="table-records">
+</table>
+{% endblock %}
+{% block recordhidden %}
+<div class="modal-content animate content-add-m" id="manageForm">            
+    <div class="imgcontainer">
+        <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Cerrar">&times;</span>
+    </div>
+    <div>
+        <div class='content-inner-add-m content-modal'>
+            <input id="record_id" type="hidden"/>
+            <div class="fc-row fc-prin-row-m">
+                <div class="content-user-template">
+                    <img class ="img-template-m" id="imgPopUp" src="{% static '/styleResources/account-circle.png' %}" />
+                </div>
+                <div class="fc-col">
+                    <div class="fc-row">
+                        <img class='img-manage' src="{% static 'styleResources/card-account.png' %}" />
+                        <input id="employee_id" class="input-row-add-xlog input-row fc-col" type="text" placeholder="DNI" disabled/>
+                    </div>
+                    <div class="fc-row">
+                        <img class='img-manage' src="{% static 'styleResources/account-tie.png' %}" />
+                        <input id="firstname" class="input-row-add-xlog input-row fc-col" type="text" name="first_name" placeholder="NOMBRE" disabled/>
+                    </div>
+                    <div class="fc-row">
+                        <img class='img-manage' src="{% static '/styleResources/account-group.png' %}" />
+                        <input id="lastname" class="input-row-add-xlog input-row fc-col" type="text" name="lastname" placeholder="APELLIDOS" disabled/>
+                    </div>
+                </div>
+            </div>
+            <div class="fc-row fc-prin-row-m">
+                <div class="content-user-template">
+                    <img class ="img-template-m" id="imgPopUp2" src="{% static '/styleResources/account-circle.png' %}" />
+                </div>
+                <div class="fc-col">
+                    <div class="fc-row">
+                        <img class='img-manage' src="{% static 'styleResources/tape-measure.png' %}" />
+                        <input id="score" class="input-row-add-xlog input-row fc-col" type="text" placeholder="SCORE" disabled/>
+                    </div>
+                    <div class="fc-row">
+                        <img class='img-manage' src="{% static 'styleResources/calendar-account.png' %}" />
+                        <input id="dateControl" class="input-row-add-xlog input-row fc-col" type="text" name="DATE" placeholder="NOMBRE" disabled/>
+                    </div>
+                    <div class="fc-row">
+                        <img class='img-manage' src="{% static '/styleResources/account-group.png' %}" />
+                        <input id="type" class="input-row-add-xlog input-row fc-col" type="text" name="lastname" placeholder="TIPO" disabled/>
+                    </div>
+                </div>
+            </div>
+            <div class="fc-row fc-prin-row-m">
+                <div class="content-user-template" id="map-container">
+                </div>
+                <div class="fc-col">
+                    <div class="fc-row">
+                        <img class='img-manage' src="{% static 'styleResources/map-marker.png' %}" />
+                        <input id="address" class="input-row-add-xlog input-row fc-col" type="text" disabled/>
+                    </div>
+                    <div class="fc-row">
+                        <img class='img-manage' src="{% static 'styleResources/latitude.png' %}" />
+                        <input id="latitude" class="input-row-add-xlog input-row fc-col" type="text" name="DATE" disabled/>
+                    </div>
+                    <div class="fc-row">
+                        <img class='img-manage' src="{% static '/styleResources/longitude.png' %}" />
+                        <input id="longitude" class="input-row-add-xlog input-row fc-col" type="text" name="lastname" disabled/>
+                    </div>
+                </div>
+            </div>
+         </div>
+    </div>    
+</div>
+{% endblock %}

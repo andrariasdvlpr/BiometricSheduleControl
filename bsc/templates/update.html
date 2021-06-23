@@ -1,0 +1,69 @@
+{% extends "users.html" %}
+{% load static %}
+{% block userscontent %}
+<div class='content-parent-users cont-log-m'>
+    <div class='content-table-users'> 
+        <table class='table-x1'>
+            <tr><th>NOMBRE</th><th>APELLIDOS</th><th>USUARIO</th><th class="column-user-m">CORREO</th></tr>
+            {% for user in users %}
+                <tr onclick="getuserdata({{user.user.id}})">
+                <td>{{user.user.first_name}}</td><td>{{user.user.last_name}}</td><td>{{user.user.username}}</td><td class="column-user-m">{{user.user.email}}</td></tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>	
+<div id="modal-wrapper" class="modal popup-container">
+    <form class="content-add-m modal-content animate" action="update" method='post' enctype='multipart/form-data' id="manageForm">{% csrf_token %}  
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Cerrar">&times;</span>
+        </div>
+        <div>
+            <input id="employee_id_hidden" type="hidden" name="cardaccount"/>
+            <div class="content-inner-add-m content-modal">
+                <div class="fc-row fc-prin-row-m">
+                    <div>
+                        <img class="img-template-m" id="imgPopUp" src="{% static '/styleResources/account-circle.png' %}">
+                    </div>
+                    <div class="fc-col">
+                        <div class="fc-row">
+                            <img class="img-manage" src="/static/styleResources/card-account.png">
+                            <input id="employee_id" class="input-row-add-xlog input-row fc-col" type="text" name="cardaccount" placeholder="DNI" disabled/>
+                        </div>
+                        <div class="fc-row">
+                            <img class="img-manage" src="/static/styleResources/account-tie.png">
+                            <input id="firstname" class="input-row-add-xlog input-row fc-col" type="text" name="firstname" placeholder="NOMBRE" disabled/>
+                        </div>
+                        <div class="fc-row">
+                            <img class="img-manage" src="/static/styleResources/account-group.png">
+                            <input id="lastname" class="input-row-add-xlog input-row fc-col" type="text" name="lastname" placeholder="APELLIDOS" disabled/>
+                        </div>
+                    </div>
+                </div>
+            <div>
+            <div class="fc-row fc-prin-row-m">
+                <div class="fc-col col-group">
+                    <img class="img-manage" src="/static/styleResources/calendar-account.png">
+                    <input id="registrationDate" class="input-row-add-xlog input-row fc-col" type="date" name="registrationDate" disabled="">
+                </div>
+                    <div class="fc-col col-group">
+                        <img class=" img-manage" src="/static/styleResources/tape-measure.png">
+                        <input id="threshold" class="input-row-add-xlog input-row fc-col" type="text" name="threshold" placeholder="UMBRAL">
+                    </div>
+                </div>
+                <div class="fc-row">
+                    <img class="img-manage" src="/static/styleResources/account-sbc.png">
+                    <input id="username" class="input-row-add-xlog input-row fc-col" type="text" name="username" placeholder="USUARIO">
+                </div>
+                <div class="fc-row">
+                    <img class="img-manage" src="/static/styleResources/email.png">
+                    <input id="email" class="input-row-add-xlog input-row fc-col" type="text" name="email" placeholder="CORREO">
+                </div>
+                <div class="fc-row button-row">
+                    <input class='submit-add-xlog buttons-update' type="submit" Value="MODIFICAR" />
+                    <input class='submit-add-xlog buttons-update' type="button" Value="BORRAR"  onclick="deleteSubmit()" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>     
+{% endblock %}

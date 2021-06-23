@@ -1,0 +1,4 @@
+sc_state_id,sc_state,sc_threshold
+1,Verificado,0.3
+2,Pendiente,0.37
+3,Rechazado,1.0

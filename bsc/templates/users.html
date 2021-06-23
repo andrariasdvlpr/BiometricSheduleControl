@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load static %}
+{% block stylescript %}
+    <script type="text/javascript" src="{% static 'javascript/users.js' %}"></script>
+{% endblock %}
+{% block logout %}<a class="nav-link base-nav-links" href='../logout/'>SALIR</a>{% endblock %}
+{% block content %}
+
+
+    {% block userscontent %}
+
+    {% endblock %}
+{% endblock %}

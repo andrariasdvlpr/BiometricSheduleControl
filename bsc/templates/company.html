@@ -1,0 +1,217 @@
+{% extends "base.html" %}
+{% load static %}
+{% block stylescript %}
+
+{% endblock %}
+{% block logout %}<a class="nav-link base-nav-links" href='../logout/'>SALIR</a>{% endblock %}
+{% block content %}
+<script>
+    var cont = 1;
+    var text = '{ "items" : []}';
+    var obj = JSON.parse(text);
+
+    function incrementRow(){
+        var table = document.getElementById("table-x1");
+        var row = table.insertRow(cont);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        cell1.style ="background: gainsboro;";
+        cell1.setAttribute("id", "type-id-"+cont);
+        cell2.innerHTML = "<input id='type-"+cont+"' type='text' style='width :100%; border: 0;padding:5px 5px;'>";
+        cont++;
+    }
+
+    function decrementRow(){
+        if(cont >1){
+            cont--;
+            var table = document.getElementById("table-x1");
+            table.deleteRow(cont);
+        } 
+    }
+
+    function fillFormTypesRecord(){
+        obj.items.length = 0; 
+        for(i=1;i<cont;i++){
+            var auxInput =document.getElementById("type-"+i);
+            var auxId = document.getElementById("type-id-"+i);
+            if(auxInput.value != ""){
+                obj.items.push({id : auxId.innerHTML ,name : auxInput.value});
+            }
+        }
+        var auxInput =document.getElementById("types");
+        auxInput.value = JSON.stringify(obj);
+    }
+
+    function getProfileData(profileId){
+    var xmlhttp = new XMLHttpRequest();
+    
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            if(this.status == 200){
+
+                var data = JSON.parse(this.responseText);  
+                var auxId = document.getElementById("profile-id");
+                var auxName = document.getElementById("profile-name");
+                var auxAct = document.getElementById("act-profile");
+                var auxInact = document.getElementById("inact-profile");
+
+                auxId.value = profileId;
+                auxName.value = data.profileName;
+
+                if(data.profileState) auxAct.checked = true;
+                else auxInact.checked = true;
+
+                if(profileId==1){
+                    auxId.setAttribute("disabled","");
+                    auxName.setAttribute("disabled","");
+                    auxAct.setAttribute("disabled","");
+                    auxInact.setAttribute("disabled","");
+                    document.getElementById("save-button").setAttribute("disabled","");
+                    document.getElementById("delete-button").setAttribute("disabled","");
+                    document.getElementById("buttons-table").style.display = "none"
+                }
+                
+                
+                for(i=0;i<data.items.length;i++){
+                    incrementRow();
+                    var auxInput =document.getElementById("type-"+(i+1));
+                    var auxCell =document.getElementById("type-id-"+(i+1));
+                    auxInput.value = data.items[i].typeName 
+                    auxCell.innerHTML = data.items[i].typeId
+                    if(profileId == 1){
+                        auxInput.setAttribute("disabled","");
+                    }
+                }
+                document.getElementById('modal-wrapper').style.display='flex';
+                submitAction = document.getElementById("profile-add");
+                submitAction.action ="update";
+            }
+            else if(this.status == 404){
+            
+            }
+
+        }
+    };
+    var url = "http://192.168.0.12:8000/bsc/rest-profile-data/"+profileId;
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+    }
+    function closeModal(){
+        document.getElementById('modal-wrapper').style.display='none'
+        document.getElementById("profile-name").value ="";
+        document.getElementById("profile-id").value = null;
+        document.getElementById("act-profile").checked = true;
+        document.getElementById("profile-id").removeAttribute("disabled");
+        document.getElementById("profile-name").removeAttribute("disabled");
+        document.getElementById("act-profile").removeAttribute("disabled");
+        document.getElementById("inact-profile").removeAttribute("disabled");
+        document.getElementById("save-button").removeAttribute("disabled");
+        document.getElementById("delete-button").removeAttribute("disabled");
+        document.getElementById("buttons-table").style.display = "flex"
+        while(cont > 1){
+            decrementRow();
+        }
+    }
+
+    function shapeFormNewProfile(){
+        document.getElementById('modal-wrapper').style.display='flex';
+        submitAction = document.getElementById("profile-add");
+        submitAction.action ="add";
+    }
+
+    function shapeFormDeleteAction(){
+        submitAction = document.getElementById("profile-add");
+        submitAction.action ="delete";
+    }
+</script>
+<style>
+[class*="cont-log-"]{
+    margin: 5% auto 5% auto;
+    min-height: 500px;
+    width: 95%;
+}
+[class*="tb-col-" ]{
+    display: none;
+}
+@media only screen and (min-width: 1000px) {
+    .cont-log-m {
+        /* margin-top: 70px; */
+        margin: 2% auto 2% auto;
+        min-height: 460px;
+        width: 60%;
+    } 
+    .tb-col-m{
+        display: table-cell;
+    } 
+     
+}
+</style>
+<div class='content-parent-users cont-log-m' style="font-size: 0.75rem; margin: auto;">
+    <div class='content-table-users'>
+        <div class="filter-row" style="display: flex;width: 100%;justify-content: center;">
+            <div class="filter-left-item" style="flex:1;">
+                <input class="filter-input" type="text" placeholder="NOMBRE PERFIL" style="width: 90%;">
+            </div>
+            <div class="filter-left-item" style="flex: 1;">
+                <select name="profile-state" id="state" style="width: 70%;height: 100%;">
+                    <option value="" disabled selected>ELIGE ESTADO</option>
+                    <option value="1">Activo</option>
+                    <option value="0">Inactivo</option>
+                </select>
+            </div>
+           <div class="filter-left-item">
+                <button type="button" style="height: 100%;border: none;border-radius: 10px;background-color: #181be7;color: #fff;box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);">LIMPIAR</button>
+                <button onclick="shapeFormNewProfile()" type="button" style="height: 100%;border: none;border-radius: 10px;background-color: #181be7;color: #fff;box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);">NUEVO</button>
+            </div>
+        </div>
+        <table class='table-x1' style="margin-top: 30px;">
+            <tr><th>ID</th><th>NOMBRE PERFIL</th><th>ACT</th><th>INACT</th></tr>
+            <tr onclick="getProfileData({{defaultProfile.profile_id}})"><td>{{defaultProfile.profile_id}}</td><td>{{defaultProfile.profile_name}}</td><td><input type="checkbox" disabled {% if defaultProfile.profile_state is True %}checked{% endif %}></td><td><input type="checkbox" {% if defaultProfile.profile_state is False %}checked{% endif %} disabled></td></tr>
+            {% for profile in companyProfiles %}
+            <tr onclick="getProfileData({{profile.profile_id}})"><td>{{profile.profile_id}}</td><td>{{profile.profile_name}}</td><td><input type="checkbox" disabled {% if profile.profile_state is True %}checked{% endif %}></td><td><input type="checkbox" {% if profile.profile_state is False %}checked{% endif %} disabled></td></tr>
+            {% endfor %}
+        </table>
+    {% block recordcontent %}
+    
+    {% endblock %}
+    </div>
+</div>
+<div id="modal-wrapper" class="modal">
+    <div class="modal-content animate" id="manageForm" style="width: 70%; height: 80%; margin: auto; overflow: overlay;">            
+        <div class="imgcontainer">
+            <span onclick="closeModal()" class="close" title="Cerrar">&times;</span>
+        </div>
+        <div class="container" >
+            <div class='content-modal'>
+                <form action='add' method='post' enctype='multipart/form-data' id="profile-add">{% csrf_token %}
+                    <input type="hidden" name="profile-id" id="profile-id">
+                <div class="filter-row" style="display: flex;width: 100%;justify-content: center;align-items: center;">
+                    <div class="filter-left-item" style="flex:1;">
+                        <input class="filter-input" id="profile-name" name="profile-name" type="text" placeholder="NOMBRE PERFIL" style="width: 90%;" required="required">
+                    </div>
+                    <div class="filter-left-item" style="flex: 1;">
+                        <label for="act">ACT: </label><input type="radio" id="act-profile" name="state-profile" value="1" checked>
+                        <label style="margin-left: 10px;" for="inact">INACT: </label><input type="radio" id="inact-profile" name="state-profile" value="0">
+                    </div>
+                    <input type="hidden" name="types" id="types">
+                    <div class="filter-left-item">
+                        <button id="delete-button" onclick="shapeFormDeleteAction()" type="submit" style="height: 100%;border: none;border-radius: 10px;background-color: #181be7;color: #fff;box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);">BORRAR</button>
+                        <button id="save-button" onclick="fillFormTypesRecord();" type="submit" style="height: 100%;border: none;border-radius: 10px;background-color: #181be7;color: #fff;box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);">GUARDAR</button>
+                    </div>
+                    </form>
+                </div>
+                <div id ="buttons-table" class="filter-row" style="display: flex;width: 100%;justify-content: flex-end;align-items: center; margin-top: 10px;">
+                    <img onclick="decrementRow()" src="{% static '/styleResources/minus.png' %}">
+                    <img onclick="incrementRow()" src="{% static '/styleResources/plus.png' %}">
+                </div>
+                <table class='table-x1' id="table-x1" style="margin-top: 10px;">
+                    <tr><th>ID</th><th>NOMBRE TIPO REGISTRO</th></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% block recordhidden %}
+    
+    {% endblock %}
+</div>
+{% endblock %}

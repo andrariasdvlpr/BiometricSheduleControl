@@ -1,0 +1,15 @@
+{
+  "login" : "{mProtocol}://{mServer}/api-token-auth/",
+  "user-info" : "{mProtocol}://{mServer}/bsc/rest-user-android/",
+  "activity-log-data" : "{mProtocol}://{mServer}/bsc/rest-record-data-android/",
+  "change-pass" : "{mProtocol}://{mServer}/bsc/rest-passw-change/",
+  "activity-logs" : "{mProtocol}://{mServer}/bsc/rest-user-records-android/",
+  "verification" : "{mProtocol}://{mServer}/smbConnection/",
+  "template" : "{mProtocol}://{mServer}/bsc/rest-user-template-android/",
+  "suggestions" : "{mProtocol}://{mServer}/bsc/rest-user-suggestions/",
+  "delete-account" : "{mProtocol}://{mServer}/bsc/rest-user-delete/",
+  "exist-account" : "{mProtocol}://{mServer}/bsc/rest-user-exist/",
+  "register" : "{mProtocol}://{mServer}/bsc/rest-register-user/",
+  "week-daily-info" : "{mProtocol}://{mServer}/bsc/rest-dailyrecords-week-android/",
+  "reset-pass" : "{mProtocol}://{mServer}/user/password/reset/",
+}

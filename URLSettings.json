@@ -1,0 +1,15 @@
+{
+  "login" : "http://192.168.0.16/api-token-auth/",
+  "user-info" : "http://192.168.0.16/bsc/rest-user-android/",
+  "activity-log-data" : "http://192.168.0.16/bsc/rest-record-data-android/",
+  "change-pass" : "http://192.168.0.16/bsc/rest-passw-change/",
+  "activity-logs" : "http://192.168.0.16/bsc/rest-user-records-android/",
+  "verification" : "http://192.168.0.16/smbConnection/",
+  "template" : "http://192.168.0.16/bsc/rest-user-template-android/",
+  "suggestions" : "http://192.168.0.16/bsc/rest-user-suggestions/",
+  "delete-account" : "http://192.168.0.16/bsc/rest-user-delete/",
+  "exist-account" : "http://192.168.0.16/bsc/rest-user-exist/",
+  "register" : "http://192.168.0.16/bsc/rest-register-user/",
+  "week-daily-info" : "http://192.168.0.16/bsc/rest-dailyrecords-week-android/",
+  "reset-pass" : "http://192.168.0.16/user/password/reset/"
+}

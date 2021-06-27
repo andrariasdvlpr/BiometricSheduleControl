@@ -25,6 +25,11 @@ python manage.py 0.0.0.0:80
 ```
 The runserver.py is to run the code in production, with a nginx server and waitress.
 
+## Further help
+
+To get more help on the Django framework go check out the [Django project](https://www.djangoproject.com/) page.
+
+
 ## Warning 
 
 This app started as academic work and continued as a project in a university Chair award (Cátedra MN, University of Vigo). So this app is in Spanish.

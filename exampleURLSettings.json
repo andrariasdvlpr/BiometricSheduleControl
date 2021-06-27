@@ -11,5 +11,5 @@
   "exist-account" : "{mProtocol}://{mServer}/bsc/rest-user-exist/",
   "register" : "{mProtocol}://{mServer}/bsc/rest-register-user/",
   "week-daily-info" : "{mProtocol}://{mServer}/bsc/rest-dailyrecords-week-android/",
-  "reset-pass" : "{mProtocol}://{mServer}/user/password/reset/",
+  "reset-pass" : "{mProtocol}://{mServer}/user/password/reset/"
 }
